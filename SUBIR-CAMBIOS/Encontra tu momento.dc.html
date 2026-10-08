@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Questrial&display=swap" rel="stylesheet"><style>html{background:#40492E}@keyframes antai-page{from{opacity:0}to{opacity:1}}body{animation:antai-page .5s cubic-bezier(.4,0,.2,1) both;margin:0;background:#F3EFE6;font-family:Questrial,'Century Gothic',sans-serif;color:#40492E}a{color:#D4622A;text-decoration:none}a:hover{color:#40492E}</style></helmet>
+
+<div style="background:transparent;min-height:100vh">
+
+<div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:12px clamp(18px,4vw,40px);background:#40492E">
+  <a href="Antai Web.dc.html" style="display:flex;align-items:center;gap:11px">
+    <img src="assets/iso-antai-crema.svg" alt="" style="height:32px;width:auto;display:block">
+    <span style="font:400 19px 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.2em;color:#F3EFE6">ANTAI</span>
+  </a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;font:13.5px Questrial,sans-serif">
+    <a href="Antai Web.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Inicio</a>
+    <a href="Antai Web.dc.html#descubri" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">ANTAI</a>
+    <a href="Encontra tu momento.dc.html" style="color:#F3EFE6;white-space:nowrap" style-hover="color:#D4622A">Encontrá tu momento</a>
+    <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Conocé lo que elegís</a>
+    <a href="Bienestar.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Momentos ANTAI</a>
+    <a href="{{ tienda }}" target="_blank" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Tienda</a>
+  </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <span onClick="{{ toggleMenu }}" style="display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;cursor:pointer;align-items:flex-end" aria-label="Menú">
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+    </span>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="flex-basis:100%;display:flex;flex-direction:column;padding:6px 0 10px;font:17px Questrial,sans-serif">
+    <a onClick="{{ closeMenu }}" href="Antai Web.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Inicio</a>
+    <a onClick="{{ closeMenu }}" href="Antai Web.dc.html#descubri" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">ANTAI</a>
+    <a onClick="{{ closeMenu }}" href="Encontra tu momento.dc.html" style="color:#F3EFE6;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Encontrá tu momento</a>
+    <a onClick="{{ closeMenu }}" href="Conoce lo que elegis.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Conocé lo que elegís</a>
+    <a onClick="{{ closeMenu }}" href="Bienestar.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Momentos ANTAI</a>
+    <a onClick="{{ closeMenu }}" href="{{ tienda }}" target="_blank" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Tienda</a>
+  </div>
+  </sc-if>
+</div>
+
+<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:fixed">
+<div style="padding:clamp(36px,9vw,96px) clamp(16px,4vw,40px) 36px">
+  <div style="box-sizing:border-box;max-width:1080px;margin:0 auto;padding:clamp(16px,2vw,24px) 0">
+    <div style="font:11.5px Questrial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#F3EFE6;margin-bottom:20px;display:flex;align-items:center;gap:14px"><span style="width:32px;height:2px;background:#D4622A"></span>Encontrá tu momento</div>
+    <h1 style="margin:0 0 16px;font:400 clamp(34px,4.6vw,56px)/1.12 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6;max-width:640px;text-shadow:0 2px 18px rgba(20,24,14,.4)">¿Qué necesitás acompañar hoy?</h1>
+    <p style="margin:0;font:17px/1.85 Questrial,sans-serif;color:#F3EFE6;max-width:580px;text-shadow:0 1px 12px rgba(20,24,14,.5)">Cada día tiene su propio ritmo. Elegí el momento que se parece al tuyo.</p>
+  </div>
+</div>
+
+<div style="padding:0 40px 96px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,228px),1fr));grid-template-rows:auto auto auto 1fr auto auto;gap:0 18px">
+    <sc-for list="{{ formulas }}" as="f" hint-placeholder-count="4">
+      <div style="display:grid;grid-row:span 6;grid-template-rows:subgrid;color:#F3EFE6;background:linear-gradient(160deg,rgba(64,73,46,.42),rgba(64,73,46,.16));border:1px solid rgba(243,239,230,.4);border-top:4px solid #D4622A;box-shadow:0 24px 60px rgba(20,24,14,.18);border-radius:16px;overflow:hidden;margin-bottom:18px">
+          <span style="aspect-ratio:1/1;display:block;background-image: {{ f.bg }};background-size:cover;background-position:center;background-color:#D9CEBF"></span>
+          <span style="font:11.5px Questrial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#F3EFE6;padding:22px 24px 0;text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.momento }}</span>
+          <span style="font:400 clamp(32px,2.8vw,38px)/1.05 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6;padding:10px 24px 12px;text-shadow:0 2px 16px rgba(20,24,14,.45)">{{ f.nombre }}</span>
+          <span style="font:15.5px/1.75 Questrial,sans-serif;color:#F3EFE6;padding:0 24px;text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.corta }}</span>
+          <span style="font:italic 17px/1.5 'EB Garamond',Georgia,serif;color:#F3EFE6;margin:14px 24px 0;padding-top:14px;border-top:1px solid rgba(243,239,230,.35);text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.sensorial }}</span>
+          <span style="display:flex;flex-direction:column;gap:10px;padding:18px 24px 24px;font:14.5px Questrial,sans-serif">
+            <a href="{{ f.url }}" style="text-align:center;color:#F3EFE6;background:#40492E;padding:13px 0">Descubrí la fórmula →</a>
+            <a href="{{ f.tiendaUrl }}" target="_blank" style="text-align:center;color:#F3EFE6;background:#D4622A;padding:13px 0">Elegila →</a>
+          </span>
+        </div>
+    </sc-for>
+  </div>
+</div>
+
+</div>
+<div id="contacto" style="padding:44px clamp(18px,4vw,40px);background:#40492E">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr));gap:30px">
+    <div>
+      <div style="font:400 22px 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.14em;color:#F3EFE6;margin-bottom:8px">ANTAI</div>
+      <div style="font:italic 14px 'EB Garamond',Georgia,serif;color:#D4622A;margin-bottom:12px">Como es adentro · es afuera</div>
+      <div style="font:13.5px/1.8 Questrial,sans-serif;color:#D9CEBF">Bienestar consciente.<br>Argentina.</div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Navegar</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="Antai Web.dc.html" style="color:#D9CEBF">Inicio</a>
+        <a href="Antai Web.dc.html#descubri" style="color:#D9CEBF">ANTAI</a>
+        <a href="Encontra tu momento.dc.html" style="color:#D9CEBF">Encontrá tu momento</a>
+        <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF">Conocé lo que elegís</a>
+        <a href="Bienestar.dc.html" style="color:#D9CEBF">Momentos ANTAI</a>
+        <a href="{{ tienda }}" target="_blank" style="color:#D9CEBF">Tienda</a>
+      </div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Contacto</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="{{ mailto }}" style="color:#D9CEBF">{{ email }}</a>
+        <a href="{{ mailto2 }}" style="color:#D9CEBF">{{ email2 }}</a>
+        <a href="{{ instagram }}" target="_blank" style="color:#D9CEBF">Instagram</a>
+        <a href="{{ whatsapp }}" target="_blank" style="color:#D9CEBF">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Información</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF">Información sanitaria</a>
+        <a href="#contacto" style="color:#D9CEBF">Política de privacidad</a>
+        <a href="#contacto" style="color:#D9CEBF">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1080px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(243,239,230,.18);font:12.5px/1.8 Questrial,sans-serif;color:rgba(217,206,191,.82)">© 2026 Antai · La información oficial de cada fórmula está disponible en su envase.</div>
+</div>
+
+
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const BG = "url('assets/bg-paisaje-m.jpg')";
+const veil = (a, b) => `linear-gradient(180deg,rgba(64,73,46,${a}) 0%,rgba(64,73,46,${b}) 100%),${BG}`;
+const VEILS = { impulso: "url('assets/blend-impulso-v2.png')", focus: "url('assets/blend-focus-v2.png')", reset: "url('assets/blend-reset-v2.png')", calma: "url('assets/blend-calma-v2.png')" };
+
+class Component extends DCLogic {
+  state = { data: null };
+
+  _mq = () => {
+    const w = window.innerWidth;
+    if (this._w !== (w > 860)) { this._w = w > 860; this.setState({ wide: this._w, menu: false }); }
+  };
+  _initResp() {
+    this._mq(); window.addEventListener('resize', this._mq);
+    let y0 = window.scrollY; window.addEventListener('scroll', () => { /*menu-scroll*/ if (this.state.menu && Math.abs(window.scrollY - y0) > 24) this.setState({ menu: false }); y0 = this.state.menu ? y0 : window.scrollY; }, { passive: true });
+    // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+      const fix = () => document.querySelectorAll('div').forEach(el => {
+        const st = el.style;
+        if (!st.backgroundImage || !/bg-hojas/.test(st.backgroundImage) || el.dataset.bgfix) return;
+        el.dataset.bgfix = '1';
+        const img = st.backgroundImage.replace(/,?\s*url\([^)]*bg-hojas[^)]*\)/g, '').replace(/^\s*,/, '').trim();
+        st.backgroundImage = img || 'none';
+        st.backgroundColor = 'transparent';
+        st.backgroundAttachment = 'scroll';
+      });
+      fix(); let n = 0; const t = setInterval(() => { fix(); if (++n > 40) clearInterval(t); }, 250);
+    }
+  }
+  renderVals() {
+    const w = this.state.wide !== false;
+    return Object.assign(this._rv(), {
+      wide: w, narrow: !w, menuOpen: !w && !!this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      trioCols: w ? '1fr 1px 1fr 1px 1fr' : '1fr'
+    });
+  }
+
+
+  _initFade() {
+    if (location.hash) {
+      let n = 0;
+      const t = setInterval(() => {
+        const el = document.getElementById(location.hash.slice(1));
+        if (el && this.state.data) { clearInterval(t); setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 62, behavior: 'instant' }), 60); }
+        else if (++n > 60) clearInterval(t);
+      }, 50);
+    }
+    if (window.parent !== window) {
+      document.documentElement.style.background = 'transparent'; document.body.style.background = 'transparent';
+      let k = 0; const w = setInterval(() => { if (this.state.data || ++k > 80) { clearInterval(w); window.parent.postMessage({ antaiReady: 1 }, '*'); } }, 50);
+    }
+    if (window.__antaiNav) return; window.__antaiNav = true;
+    const ease = t => -(Math.cos(Math.PI * t) - 1) / 2;
+    const smooth = (to) => {
+      const from = window.scrollY, d = to - from, dur = Math.min(1800, Math.max(1150, Math.abs(d) * 1.1)), t0 = performance.now();
+      const step = (now) => { const p = Math.min(1, (now - t0) / dur); window.scrollTo({ top: from + d * ease(p), behavior: 'instant' }); if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    document.addEventListener('click', e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const href = a.getAttribute('href') || '';
+      if (/^(https?:|mailto:|tel:)/.test(href)) return;
+      const file = href.split('#')[0], hash = href.split('#')[1] || '';
+      const here = decodeURIComponent(location.pathname.split('/').pop());
+      if (window.parent !== window && file && decodeURIComponent(file) !== here) { e.preventDefault(); window.parent.postMessage({ antaiGo: href }, '*'); return; }
+      if (file && decodeURIComponent(file) !== here) return;
+      e.preventDefault();
+      if (this.state.menu) this.setState({ menu: false });
+      const el = hash && document.getElementById(hash);
+      smooth(el ? el.getBoundingClientRect().top + window.scrollY - 62 : 0);
+    }, true);
+  }
+
+  componentDidMount() {
+    this._initResp();
+    this._initFade();
+    import('./antai-data.js?v=20261008a').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
+  }
+  _rv() {
+    const d = this.state.data;
+    const c = (d && d.CONTACTO) || { email: 'natalia@antai.com.ar', email2: 'martin@antai.com.ar', instagram: '#contacto', whatsapp: '#contacto', tienda: '#contacto' };
+    return {
+      formulas: d ? d.FORMULAS.map(f => ({
+        nombre: f.nombre, momento: f.momento, corta: f.corta, sensorial: f.sensorial,
+        url: 'Formula.dc.html#' + f.slug, bg: VEILS[f.slug],
+        tiendaUrl: f.tiendaUrl || c.tienda
+      })) : null,
+      tienda: c.tienda,
+      email: c.email, mailto: 'mailto:' + c.email, email2: c.email2 || '', mailto2: 'mailto:' + (c.email2 || ''), instagram: c.instagram, whatsapp: c.whatsapp
+    };
+  }
+}
+</script>
+</body>
+</html>
