@@ -180,6 +180,7 @@
       <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Contacto</div>
       <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
         <a href="{{ mailto }}" style="color:#D9CEBF">{{ email }}</a>
+        <a href="{{ mailto2 }}" style="color:#D9CEBF">{{ email2 }}</a>
         <a href="{{ instagram }}" target="_blank" style="color:#D9CEBF">Instagram</a>
         <a href="{{ whatsapp }}" target="_blank" style="color:#D9CEBF">WhatsApp</a>
       </div>
@@ -278,7 +279,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._initResp();
     this._initFade();
-    import('./antai-data.js').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
+    import('./antai-data.js?v=20261008a').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
     this._onHash = () => this.setState({ slug: (location.hash || '#impulso').slice(1) });
     window.addEventListener('hashchange', this._onHash);
   }
@@ -286,8 +287,8 @@ class Component extends DCLogic {
 
   _rv() {
     const d = this.state.data;
-    const c = (d && d.CONTACTO) || { email: 'hola@antai.com.ar', instagram: '#contacto', whatsapp: '#contacto', tienda: '#contacto' };
-    const base = { tienda: c.tienda, email: c.email, mailto: 'mailto:' + c.email, instagram: c.instagram, whatsapp: c.whatsapp };
+    const c = (d && d.CONTACTO) || { email: 'natalia@antai.com.ar', email2: 'martin@antai.com.ar', instagram: '#contacto', whatsapp: '#contacto', tienda: '#contacto' };
+    const base = { tienda: c.tienda, email: c.email, mailto: 'mailto:' + c.email, email2: c.email2 || '', mailto2: 'mailto:' + (c.email2 || ''), instagram: c.instagram, whatsapp: c.whatsapp };
     if (!d) return base;
 
     const list = d.FORMULAS;

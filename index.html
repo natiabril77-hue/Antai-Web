@@ -7,9 +7,10 @@ iframe.on{opacity:1;pointer-events:auto}</style></head>
 <body>
 <script>
 var frames={},cur=null,HOME='Antai Web.dc.html',ORDER=['Antai Web.dc.html','Encontra tu momento.dc.html','Conoce lo que elegis.dc.html','Bienestar.dc.html'];
+function ver(h){var p=h.split('#');return p[0]+(p[0].indexOf('?')<0?'?v=20261008a':'')+(p[1]?'#'+p[1]:'')}
 function keyOf(h){var f=h.split('#')[0];return /^Formula/.test(f)?h:f}
 function mk(href){var k=keyOf(href);if(frames[k])return frames[k];
-  var f=document.createElement('iframe');f.title='ANTAI';f.src=href;document.body.appendChild(f);
+  var f=document.createElement('iframe');f.title='ANTAI';f.src=ver(href);document.body.appendChild(f);
   var o={el:f,ready:false,waiters:[]};frames[k]=o;
   f.addEventListener('load',function(){setTimeout(function(){if(!o.ready){o.ready=true;o.waiters.splice(0).forEach(function(w){w()})}},2500)});
   return o}

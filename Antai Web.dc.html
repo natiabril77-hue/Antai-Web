@@ -210,7 +210,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._initResp();
     this._initFade();
-    import('./antai-data.js').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
+    import('./antai-data.js?v=20261008a').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
   }
   _rv() {
     const d = this.state.data;
