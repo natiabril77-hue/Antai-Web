@@ -55,15 +55,15 @@
 </div>
 
 <div style="padding:0 40px 96px">
-  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,228px),1fr));grid-template-rows:auto auto auto 1fr auto auto;gap:16px">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,228px),1fr));grid-template-rows:auto auto auto 1fr auto auto;gap:0 18px">
     <sc-for list="{{ formulas }}" as="f" hint-placeholder-count="4">
-      <div style="display:grid;grid-row:span 6;grid-template-rows:subgrid;color:#F3EFE6;background:linear-gradient(160deg,rgba(64,73,46,.42),rgba(64,73,46,.16));border:1px solid rgba(243,239,230,.4);border-top:4px solid #D4622A;box-shadow:0 24px 60px rgba(20,24,14,.18);border-radius:16px;overflow:hidden">
+      <div style="display:grid;grid-row:span 6;grid-template-rows:subgrid;color:#F3EFE6;background:linear-gradient(160deg,rgba(64,73,46,.42),rgba(64,73,46,.16));border:1px solid rgba(243,239,230,.4);border-top:4px solid #D4622A;box-shadow:0 24px 60px rgba(20,24,14,.18);border-radius:16px;overflow:hidden;margin-bottom:18px">
           <span style="aspect-ratio:1/1;display:block;background-image: {{ f.bg }};background-size:cover;background-position:center;background-color:#D9CEBF"></span>
-          <span style="font:11.5px Questrial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#F3EFE6;padding:26px 24px 0;text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.momento }}</span>
+          <span style="font:11.5px Questrial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#F3EFE6;padding:22px 24px 0;text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.momento }}</span>
           <span style="font:400 clamp(32px,2.8vw,38px)/1.05 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6;padding:10px 24px 12px;text-shadow:0 2px 16px rgba(20,24,14,.45)">{{ f.nombre }}</span>
           <span style="font:15.5px/1.75 Questrial,sans-serif;color:#F3EFE6;padding:0 24px;text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.corta }}</span>
-          <span style="font:italic 13.5px/1.6 'EB Garamond',Georgia,serif;color:#F3EFE6;margin:16px 24px 0;padding-top:14px;border-top:1px solid rgba(243,239,230,.35);text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.sensorial }}</span>
-          <span style="display:flex;flex-direction:column;gap:10px;padding:20px 24px 24px;font:13.5px Questrial,sans-serif">
+          <span style="font:italic 17px/1.5 'EB Garamond',Georgia,serif;color:#F3EFE6;margin:14px 24px 0;padding-top:14px;border-top:1px solid rgba(243,239,230,.35);text-shadow:0 1px 10px rgba(20,24,14,.5)">{{ f.sensorial }}</span>
+          <span style="display:flex;flex-direction:column;gap:10px;padding:18px 24px 24px;font:14.5px Questrial,sans-serif">
             <a href="{{ f.url }}" style="text-align:center;color:#F3EFE6;background:#40492E;padding:13px 0">Descubrí la fórmula →</a>
             <a href="{{ f.tiendaUrl }}" target="_blank" style="text-align:center;color:#F3EFE6;background:#D4622A;padding:13px 0">Elegila →</a>
           </span>
