@@ -45,7 +45,7 @@
   </sc-if>
 </div>
 
-<div style="min-height:62vh;display:flex;align-items:flex-end;padding:clamp(40px,8vw,84px) clamp(18px,4vw,40px) 52px;background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.36),rgba(64,73,46,.8)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
+<div style="min-height:62vh;display:flex;align-items:flex-end;padding:clamp(40px,8vw,84px) clamp(18px,4vw,40px) 52px;background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.36),rgba(64,73,46,.8)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
   <div style="max-width:1080px;margin:0 auto;width:100%">
     <a href="Encontra tu momento.dc.html" style="display:inline-block;margin-bottom:22px;font:13px Questrial,sans-serif;color:#D9CEBF">← Encontrá tu momento</a>
     <span style="display:block;width:64px;height:3px;background:#D4622A;margin-bottom:22px"></span>
@@ -62,7 +62,7 @@
   </sc-for>
 </div>
 
-<div style="padding:clamp(24px,3vw,40px) clamp(16px,4vw,40px) clamp(24px,3vw,40px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.8),rgba(64,73,46,.5)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
+<div style="padding:clamp(24px,3vw,40px) clamp(16px,4vw,40px) clamp(24px,3vw,40px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.8),rgba(64,73,46,.5)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
   <div style="box-sizing:border-box;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(20,24,14,.28);border:1px solid rgba(243,239,230,.4);background:linear-gradient(150deg,rgba(64,73,46,.35),rgba(64,73,46,.12))">
     <div style="padding:clamp(36px,5vw,64px) clamp(24px,4.5vw,60px);display:flex;flex-direction:column;justify-content:center">
       <span style="display:block;width:48px;height:3px;background:#D4622A;margin-bottom:24px"></span>
@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<div id="plantas" style="padding:clamp(40px,5vw,64px) 40px 88px;background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.5),rgba(64,73,46,.45)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
+<div id="plantas" style="padding:clamp(40px,5vw,64px) 40px 88px;background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.5),rgba(64,73,46,.45)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
   <div style="max-width:1080px;margin:0 auto">
     <span style="display:block;width:64px;height:3px;background:#D4622A;margin-bottom:26px"></span>
     <h2 style="margin:0 0 16px;font:400 clamp(26px,3vw,38px)/1.2 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6">¿Qué hay detrás de esta fórmula?</h2>
@@ -108,7 +108,7 @@
   </div>
 </div>
 
-<div style="padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px) clamp(64px,8vw,96px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.45),rgba(64,73,46,.82)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
+<div style="padding:clamp(72px,9vw,120px) clamp(16px,4vw,40px) clamp(64px,8vw,96px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.3),rgba(64,73,46,.55)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
   <div style="max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px">
     <div style="font:12px Questrial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#F3EFE6;display:flex;align-items:center;gap:14px"><span style="width:28px;height:2px;background:#D4622A"></span>Concepto<span style="width:28px;height:2px;background:#D4622A"></span></div>
     <div style="font:400 clamp(40px,5.2vw,68px)/1.05 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6;text-shadow:0 2px 24px rgba(20,24,14,.35);text-wrap:balance">{{ f.concepto }}</div>
@@ -200,7 +200,7 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
-const BG = "url('assets/bg-hojas.jpg')";
+const BG = "url('assets/bg-hojas-m.jpg')";
 const HERO = {
   impulso: "url('assets/blend-impulso.png')",
   focus: "url('assets/blend-focus.png')",
@@ -221,12 +221,19 @@ class Component extends DCLogic {
   };
   _initResp() {
     this._mq(); window.addEventListener('resize', this._mq);
+    let y0 = window.scrollY; window.addEventListener('scroll', () => { /*menu-scroll*/ if (this.state.menu && Math.abs(window.scrollY - y0) > 24) this.setState({ menu: false }); y0 = this.state.menu ? y0 : window.scrollY; }, { passive: true });
     // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-      requestAnimationFrame(() => document.querySelectorAll('div').forEach(el => {
-        const a = el.style.backgroundAttachment;
-        if (a && a.includes('fixed')) el.style.backgroundAttachment = a.replace(/fixed/g, 'scroll');
-      }));
+      const fix = () => document.querySelectorAll('div').forEach(el => {
+        const st = el.style;
+        if (!st.backgroundImage || !/bg-hojas/.test(st.backgroundImage) || el.dataset.bgfix) return;
+        el.dataset.bgfix = '1';
+        const img = st.backgroundImage.replace(/,?\s*url\([^)]*bg-hojas[^)]*\)/g, '').replace(/^\s*,/, '').trim();
+        st.backgroundImage = img || 'none';
+        st.backgroundColor = 'transparent';
+        st.backgroundAttachment = 'scroll';
+      });
+      fix(); let n = 0; const t = setInterval(() => { fix(); if (++n > 40) clearInterval(t); }, 250);
     }
   }
   renderVals() {

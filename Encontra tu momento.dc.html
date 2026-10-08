@@ -45,7 +45,7 @@
   </sc-if>
 </div>
 
-<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:fixed">
+<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:fixed">
 <div style="padding:clamp(36px,9vw,96px) clamp(16px,4vw,40px) 36px">
   <div style="box-sizing:border-box;max-width:1080px;margin:0 auto;padding:clamp(16px,2vw,24px) 0">
     <div style="font:11.5px Questrial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#F3EFE6;margin-bottom:20px;display:flex;align-items:center;gap:14px"><span style="width:32px;height:2px;background:#D4622A"></span>Encontrá tu momento</div>
@@ -117,7 +117,7 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
-const BG = "url('assets/bg-paisaje.jpg')";
+const BG = "url('assets/bg-paisaje-m.jpg')";
 const veil = (a, b) => `linear-gradient(180deg,rgba(64,73,46,${a}) 0%,rgba(64,73,46,${b}) 100%),${BG}`;
 const VEILS = { impulso: "url('assets/blend-impulso-v2.png')", focus: "url('assets/blend-focus-v2.png')", reset: "url('assets/blend-reset-v2.png')", calma: "url('assets/blend-calma-v2.png')" };
 
@@ -130,12 +130,19 @@ class Component extends DCLogic {
   };
   _initResp() {
     this._mq(); window.addEventListener('resize', this._mq);
+    let y0 = window.scrollY; window.addEventListener('scroll', () => { /*menu-scroll*/ if (this.state.menu && Math.abs(window.scrollY - y0) > 24) this.setState({ menu: false }); y0 = this.state.menu ? y0 : window.scrollY; }, { passive: true });
     // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-      requestAnimationFrame(() => document.querySelectorAll('div').forEach(el => {
-        const a = el.style.backgroundAttachment;
-        if (a && a.includes('fixed')) el.style.backgroundAttachment = a.replace(/fixed/g, 'scroll');
-      }));
+      const fix = () => document.querySelectorAll('div').forEach(el => {
+        const st = el.style;
+        if (!st.backgroundImage || !/bg-hojas/.test(st.backgroundImage) || el.dataset.bgfix) return;
+        el.dataset.bgfix = '1';
+        const img = st.backgroundImage.replace(/,?\s*url\([^)]*bg-hojas[^)]*\)/g, '').replace(/^\s*,/, '').trim();
+        st.backgroundImage = img || 'none';
+        st.backgroundColor = 'transparent';
+        st.backgroundAttachment = 'scroll';
+      });
+      fix(); let n = 0; const t = setInterval(() => { fix(); if (++n > 40) clearInterval(t); }, 250);
     }
   }
   renderVals() {

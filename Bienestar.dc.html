@@ -45,7 +45,7 @@
   </sc-if>
 </div>
 
-<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:fixed;padding:0 clamp(16px,4vw,40px) 96px">
+<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:fixed;padding:0 clamp(16px,4vw,40px) 96px">
 
   <div style="max-width:1080px;margin:0 auto;padding:clamp(36px,12vw,140px) 0 64px">
     <div style="font:11.5px Questrial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#F3EFE6;margin-bottom:20px;display:flex;align-items:center;gap:14px"><span style="width:32px;height:2px;background:#D4622A"></span>Momentos ANTAI</div>
@@ -99,7 +99,7 @@
     </div>
   </div>
   <div style="max-width:1080px;margin:0 auto;padding:clamp(64px,8vw,100px) 0 clamp(16px,3vw,28px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
-    <img src="assets/iso-antai-crema.svg" alt="" style="height:38px;width:auto;opacity:.9">
+    <img src="assets/iso-antai-crema.svg" alt="" style="height:clamp(56px,7vw,72px);width:auto;opacity:.95">
     <div style="font:400 clamp(24px,2.8vw,34px)/1.2 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.02em;color:#F3EFE6;text-shadow:0 2px 18px rgba(20,24,14,.4)">Como es adentro <span style="color:#D4622A">·</span> es afuera</div>
   </div>
 </div>
@@ -168,12 +168,19 @@ class Component extends DCLogic {
   };
   _initResp() {
     this._mq(); window.addEventListener('resize', this._mq);
+    let y0 = window.scrollY; window.addEventListener('scroll', () => { /*menu-scroll*/ if (this.state.menu && Math.abs(window.scrollY - y0) > 24) this.setState({ menu: false }); y0 = this.state.menu ? y0 : window.scrollY; }, { passive: true });
     // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-      requestAnimationFrame(() => document.querySelectorAll('div').forEach(el => {
-        const a = el.style.backgroundAttachment;
-        if (a && a.includes('fixed')) el.style.backgroundAttachment = a.replace(/fixed/g, 'scroll');
-      }));
+      const fix = () => document.querySelectorAll('div').forEach(el => {
+        const st = el.style;
+        if (!st.backgroundImage || !/bg-hojas/.test(st.backgroundImage) || el.dataset.bgfix) return;
+        el.dataset.bgfix = '1';
+        const img = st.backgroundImage.replace(/,?\s*url\([^)]*bg-hojas[^)]*\)/g, '').replace(/^\s*,/, '').trim();
+        st.backgroundImage = img || 'none';
+        st.backgroundColor = 'transparent';
+        st.backgroundAttachment = 'scroll';
+      });
+      fix(); let n = 0; const t = setInterval(() => { fix(); if (++n > 40) clearInterval(t); }, 250);
     }
   }
   renderVals() {

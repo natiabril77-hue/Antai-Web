@@ -46,7 +46,7 @@
   </sc-if>
 </div>
 
-<div style="min-height:calc(100vh - 62px);box-sizing:border-box;display:flex;align-items:center;padding:{{ heroPad }};background-image:radial-gradient(ellipse 70% 60% at 50% 55%,rgba(40,46,28,.45) 0%,rgba(40,46,28,0) 75%),linear-gradient(180deg,rgba(64,73,46,.42),rgba(64,73,46,.5)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,scroll,fixed">
+<div style="min-height:calc(100vh - 62px);box-sizing:border-box;display:flex;align-items:center;padding:{{ heroPad }};background-image:radial-gradient(ellipse 70% 60% at 50% 55%,rgba(40,46,28,.45) 0%,rgba(40,46,28,0) 75%),linear-gradient(180deg,rgba(64,73,46,.42),rgba(64,73,46,.5)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,scroll,fixed">
   <div style="max-width:1160px;margin:0 auto;width:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(24px,3vw,52px)">
     <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;align-items:{{ heroLogoAlign }};gap:6px;padding-right:{{ heroLogoPad }}">
       <img src="assets/iso-antai-crema.svg" alt="" style="height:clamp(140px,17vw,250px);width:auto;display:block;transform-origin:center;animation:antai-in 1.3s cubic-bezier(.4,0,.2,1) both,antai-pulse 5.5s ease-in-out 1.3s infinite">
@@ -62,7 +62,7 @@
   </div>
 </div>
 
-<div id="descubri" style="scroll-margin-top:62px;padding:clamp(40px,4.5vw,64px) clamp(16px,4vw,40px) clamp(72px,9vw,120px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.5),rgba(64,73,46,.42)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
+<div id="descubri" style="scroll-margin-top:62px;padding:clamp(40px,4.5vw,64px) clamp(16px,4vw,40px) clamp(72px,9vw,120px);background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.5),rgba(64,73,46,.42)),url('assets/bg-hojas-m.jpg');background-size:cover;background-position:center;background-attachment:scroll,fixed">
   <div style="max-width:980px;margin:0 auto;padding:clamp(36px,6vw,72px) clamp(24px,5vw,64px);background:linear-gradient(180deg,rgba(243,239,230,.7) 0%,rgba(243,239,230,.8) 34%,rgba(243,239,230,.86) 100%);box-shadow:0 30px 80px rgba(20,24,14,.28);border-radius:22px;overflow:hidden">
     <div style="display:flex;align-items:baseline;gap:20px;margin-bottom:34px">
       <span style="font:600 14px Questrial,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#D4622A;white-space:nowrap">Nuestra mirada</span>
@@ -134,7 +134,7 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
-const BG = "url('assets/bg-paisaje.jpg')";
+const BG = "url('assets/bg-paisaje-m.jpg')";
 const veil = (a, b) => `linear-gradient(180deg,rgba(64,73,46,${a}) 0%,rgba(64,73,46,${b}) 100%),${BG}`;
 const VEILS = { impulso: veil(.24, .56), focus: veil(.3, .6), reset: veil(.34, .64), calma: veil(.4, .7) };
 
@@ -147,12 +147,19 @@ class Component extends DCLogic {
   };
   _initResp() {
     this._mq(); window.addEventListener('resize', this._mq);
+    let y0 = window.scrollY; window.addEventListener('scroll', () => { /*menu-scroll*/ if (this.state.menu && Math.abs(window.scrollY - y0) > 24) this.setState({ menu: false }); y0 = this.state.menu ? y0 : window.scrollY; }, { passive: true });
     // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
     if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-      requestAnimationFrame(() => document.querySelectorAll('div').forEach(el => {
-        const a = el.style.backgroundAttachment;
-        if (a && a.includes('fixed')) el.style.backgroundAttachment = a.replace(/fixed/g, 'scroll');
-      }));
+      const fix = () => document.querySelectorAll('div').forEach(el => {
+        const st = el.style;
+        if (!st.backgroundImage || !/bg-hojas/.test(st.backgroundImage) || el.dataset.bgfix) return;
+        el.dataset.bgfix = '1';
+        const img = st.backgroundImage.replace(/,?\s*url\([^)]*bg-hojas[^)]*\)/g, '').replace(/^\s*,/, '').trim();
+        st.backgroundImage = img || 'none';
+        st.backgroundColor = 'transparent';
+        st.backgroundAttachment = 'scroll';
+      });
+      fix(); let n = 0; const t = setInterval(() => { fix(); if (++n > 40) clearInterval(t); }, 250);
     }
   }
   renderVals() {
