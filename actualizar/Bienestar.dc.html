@@ -45,12 +45,6 @@
   </sc-if>
 </div>
 
-<sc-if value="{{ stick }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;top:74px;left:50%;transform:translateX(-50%);z-index:45;display:flex;gap:8px;padding:6px;border-radius:999px;background:rgba(40,46,28,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(243,239,230,.25);box-shadow:0 10px 30px rgba(20,24,14,.3)">
-  <a onClick="{{ goLeer }}" href="#articulos" style="font:14px Questrial,sans-serif;color:#F3EFE6;padding:10px 24px;border-radius:999px;background:{{ bgLeer }};transition:background .35s ease" style-hover="background:#B9531F">Leer</a>
-  <a onClick="{{ goEscuchar }}" href="#podcast" style="font:14px Questrial,sans-serif;color:#F3EFE6;padding:10px 24px;border-radius:999px;background:{{ bgEscuchar }};transition:background .35s ease" style-hover="background:#B9531F">Escuchar</a>
-</div>
-</sc-if>
 <div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:fixed;padding:0 clamp(16px,4vw,40px) 96px">
 
   <div style="max-width:1080px;margin:0 auto;padding:clamp(36px,12vw,140px) 0 64px">
@@ -185,7 +179,6 @@ class Component extends DCLogic {
     const w = this.state.wide !== false;
     return Object.assign(this._rv(), {
       bgLeer: this.state.sec === 'leer' ? '#D4622A' : 'rgba(243,239,230,.06)', bgEscuchar: this.state.sec === 'escuchar' ? '#D4622A' : 'rgba(243,239,230,.06)',
-      stick: !!this.state.stick,
       goLeer: () => { this._lock = Date.now(); this.setState({ sec: 'leer' }); },
       goEscuchar: () => { this._lock = Date.now(); this.setState({ sec: 'escuchar' }); },
       wide: w, narrow: !w, menuOpen: !w && !!this.state.menu,
@@ -196,16 +189,6 @@ class Component extends DCLogic {
   }
 
 
-  _watchSec() {
-    const f = () => {
-      const p = document.getElementById('podcast'); if (!p) return;
-      const b = document.querySelector('a[href="#articulos"]'); const st = !!b && b.getBoundingClientRect().bottom < 70; if (st !== !!this.state.stick) this.setState({ stick: st });
-      if (this._lock && Date.now() - this._lock < 2200) return;
-      const sec = p.getBoundingClientRect().top < window.innerHeight * 0.55 ? 'escuchar' : 'leer';
-      if (sec !== this.state.sec) this.setState({ sec });
-    };
-    window.addEventListener('scroll', f, { passive: true }); document.addEventListener('scroll', f, { passive: true, capture: true }); setInterval(f, 400); f();
-  }
   _initFade() {
     if (location.hash) {
       let n = 0;
@@ -245,7 +228,6 @@ class Component extends DCLogic {
   componentDidMount() {
     this._initResp();
     this._initFade();
-    this._watchSec();
     import('./antai-data.js').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
   }
 
