@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Questrial&display=swap" rel="stylesheet"><style>html{background:#40492E}@keyframes antai-page{from{opacity:0}to{opacity:1}}body{animation:antai-page .5s cubic-bezier(.4,0,.2,1) both;margin:0;background:#40492E;font-family:Questrial,'Century Gothic',sans-serif;color:#40492E}a{color:#40492E;text-decoration:none}a:hover{color:#D4622A}</style></helmet>
+
+<div style="background:transparent">
+
+<div style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:12px clamp(18px,4vw,40px);background:#40492E">
+  <a href="Antai Web.dc.html" style="display:flex;align-items:center;gap:11px">
+    <img src="assets/iso-antai-crema.svg" alt="" style="height:32px;width:auto;display:block">
+    <span style="font:400 19px 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.2em;color:#F3EFE6">ANTAI</span>
+  </a>
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;font:13.5px Questrial,sans-serif">
+    <a href="Antai Web.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Inicio</a>
+    <a href="Antai Web.dc.html#descubri" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">ANTAI</a>
+    <a href="Encontra tu momento.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Encontrá tu momento</a>
+    <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Conocé lo que elegís</a>
+    <a href="Bienestar.dc.html" style="color:#F3EFE6;white-space:nowrap;border-bottom:2px solid #D4622A;padding-bottom:3px" style-hover="color:#D4622A">Momentos ANTAI</a>
+    <a href="{{ tienda }}" target="_blank" style="color:#D9CEBF;white-space:nowrap" style-hover="color:#D4622A">Tienda</a>
+  </div>
+  </sc-if>
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <span onClick="{{ toggleMenu }}" style="display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;cursor:pointer;align-items:flex-end" aria-label="Menú">
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+      <span style="display:block;width:26px;height:2px;background:#F3EFE6"></span>
+    </span>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="flex-basis:100%;display:flex;flex-direction:column;padding:6px 0 10px;font:17px Questrial,sans-serif">
+    <a onClick="{{ closeMenu }}" href="Antai Web.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Inicio</a>
+    <a onClick="{{ closeMenu }}" href="Antai Web.dc.html#descubri" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">ANTAI</a>
+    <a onClick="{{ closeMenu }}" href="Encontra tu momento.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Encontrá tu momento</a>
+    <a onClick="{{ closeMenu }}" href="Conoce lo que elegis.dc.html" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Conocé lo que elegís</a>
+    <a onClick="{{ closeMenu }}" href="Bienestar.dc.html" style="color:#F3EFE6;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px;border-bottom:2px solid #D4622A;padding-bottom:3px" style-hover="color:#D4622A">Momentos ANTAI</a>
+    <a onClick="{{ closeMenu }}" href="{{ tienda }}" target="_blank" style="color:#D9CEBF;padding:14px 0;border-bottom:1px solid rgba(243,239,230,.14);font-size:17px" style-hover="color:#D4622A">Tienda</a>
+  </div>
+  </sc-if>
+</div>
+
+<div style="background-color:#40492E;background-image:linear-gradient(180deg,rgba(64,73,46,.55),rgba(64,73,46,.45)),url('assets/bg-hojas.jpg');background-size:cover;background-position:center;background-attachment:fixed;padding:0 clamp(16px,4vw,40px) 96px">
+
+  <div style="max-width:1080px;margin:0 auto;padding:clamp(36px,12vw,140px) 0 64px">
+    <div style="font:11.5px Questrial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#F3EFE6;margin-bottom:20px;display:flex;align-items:center;gap:14px"><span style="width:32px;height:2px;background:#D4622A"></span>Momentos ANTAI</div>
+    <h1 style="margin:0 0 16px;font:400 clamp(36px,5vw,62px)/1.1 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6;max-width:680px;text-shadow:0 2px 18px rgba(20,24,14,.4)">Pequeñas pausas, grandes cambios.</h1>
+    <p style="margin:0;font:17px/1.85 Questrial,sans-serif;color:#F3EFE6;max-width:540px;text-shadow:0 1px 12px rgba(20,24,14,.5)">Lo que cuidás adentro, se refleja afuera.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
+      <a onClick="{{ goLeer }}" href="#articulos" style="font:14.5px Questrial,sans-serif;color:#F3EFE6;padding:14px 30px;background:{{ bgLeer }};border:1px solid #D4622A;border-radius:999px;transition:background .35s ease;-webkit-tap-highlight-color:transparent;cursor:pointer">Leer</a>
+      <a onClick="{{ goEscuchar }}" href="#podcast" style="font:14.5px Questrial,sans-serif;color:#F3EFE6;padding:14px 30px;background:{{ bgEscuchar }};border:1px solid #D4622A;border-radius:999px;transition:background .35s ease;-webkit-tap-highlight-color:transparent;cursor:pointer">Escuchar</a>
+    </div>
+  </div>
+
+  <div id="articulos" style="box-sizing:border-box;max-width:1080px;margin:0 auto 28px;padding:clamp(32px,4.5vw,56px) clamp(20px,4vw,48px);background:rgba(243,239,230,.88);box-shadow:0 24px 60px rgba(20,24,14,.25);scroll-margin-top:90px;border-radius:22px;overflow:hidden">
+    <span style="display:block;width:48px;height:3px;background:#D4622A;margin-bottom:20px"></span>
+    <h2 style="margin:0 0 8px;font:400 clamp(28px,3.4vw,42px) 'EB Garamond',Garamond,Georgia,serif;color:#40492E">Leer</h2>
+    <p style="margin:0 0 30px;font:16px/1.8 Questrial,sans-serif;color:#40492E;max-width:560px">Artículos para tomar conciencia del propio momento: hábitos, ritmo cotidiano y mundo vegetal.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));grid-template-rows:auto 1fr auto;gap:18px">
+      <sc-for list="{{ articulos }}" as="a" hint-placeholder-count="3">
+        <a href="#articulos" style="display:grid;grid-row:span 3;grid-template-rows:subgrid;background:#F3EFE6;border:1px solid rgba(64,73,46,.14);border-top:4px solid #D4622A;padding:24px 24px 26px;color:#40492E;border-radius:16px;overflow:hidden" style-hover="border-color:#D4622A">
+          <span style="font:400 23px/1.3 'EB Garamond',Garamond,Georgia,serif;color:#40492E">{{ a.t }}</span>
+          <span style="font:14.5px/1.75 Questrial,sans-serif;color:#40492E;padding-top:10px">{{ a.d }}</span>
+          <span style="font:13.5px Questrial,sans-serif;color:#40492E;border-bottom:2px solid #D4622A;padding-bottom:3px;justify-self:start;margin-top:16px">Leer →</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="podcast" style="box-sizing:border-box;max-width:1080px;margin:0 auto;padding:clamp(32px,4.5vw,56px) clamp(20px,4vw,48px);background:linear-gradient(150deg,rgba(64,73,46,.78) 0%,rgba(64,73,46,.55) 60%,rgba(64,73,46,.4) 100%);box-shadow:0 24px 60px rgba(20,24,14,.25);scroll-margin-top:90px;border-radius:22px;overflow:hidden">
+    <span style="display:block;width:48px;height:3px;background:#D4622A;margin-bottom:20px"></span>
+    <h2 style="margin:0 0 8px;font:400 clamp(28px,3.4vw,42px) 'EB Garamond',Garamond,Georgia,serif;color:#F3EFE6">Escuchá ANTAI</h2>
+    <p style="margin:0 0 30px;font:16px/1.8 Questrial,sans-serif;color:#F3EFE6;max-width:560px">Cuatro momentos del día. Cuatro fórmulas pensadas para acompañarlos.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));grid-template-rows:auto auto 1fr auto auto;gap:16px">
+      <sc-for list="{{ audios }}" as="a" hint-placeholder-count="4">
+        <div style="display:grid;grid-row:span 5;grid-template-rows:subgrid;background:#F3EFE6;border:1px solid rgba(64,73,46,.14);border-top:4px solid #D4622A;padding:24px 22px 22px;border-radius:16px;overflow:hidden">
+          <span style="font:400 28px 'EB Garamond',Garamond,Georgia,serif;color:#40492E">{{ a.nombre }}</span>
+          <span style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;padding-top:6px">{{ a.momento }}</span>
+          <span style="font:14.5px/1.75 Questrial,sans-serif;color:#40492E;padding-top:12px">{{ a.d }}</span>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(64,73,46,.16)">
+            <span onClick="{{ a.onPlay }}" style="width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;background:#D4622A;color:#F3EFE6;font:13px Questrial,sans-serif;cursor:pointer;border-radius:50%">{{ a.icon }}</span>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:3px;height:20px">
+                <sc-for list="{{ a.ondas }}" as="o" hint-placeholder-count="14">
+                  <span style="width:3px;height: {{ o }};background:#A9B29B"></span>
+                </sc-for>
+              </div>
+              <div style="display:flex;justify-content:space-between;font:12.5px Questrial,sans-serif;color:#40492E;margin-top:5px"><span>{{ a.label }}</span><span>{{ a.dur }}</span></div>
+            </div>
+          </div>
+          <a href="{{ a.url }}" style="font:13px Questrial,sans-serif;color:#40492E;margin-top:14px;justify-self:start;border-bottom:2px solid #D4622A;padding-bottom:2px">Conocer {{ a.nombre }} →</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="max-width:1080px;margin:0 auto;padding:clamp(64px,8vw,100px) 0 clamp(16px,3vw,28px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px">
+    <img src="assets/iso-antai-crema.svg" alt="" style="height:38px;width:auto;opacity:.9">
+    <div style="font:400 clamp(24px,2.8vw,34px)/1.2 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.02em;color:#F3EFE6;text-shadow:0 2px 18px rgba(20,24,14,.4)">Como es adentro <span style="color:#D4622A">·</span> es afuera</div>
+  </div>
+</div>
+
+<div id="contacto" style="padding:44px clamp(18px,4vw,40px);background:#40492E">
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:30px">
+    <div>
+      <div style="font:400 22px 'EB Garamond',Garamond,Georgia,serif;letter-spacing:.14em;color:#F3EFE6;margin-bottom:8px">ANTAI</div>
+      <div style="font:italic 14px 'EB Garamond',Georgia,serif;color:#D4622A;margin-bottom:12px">Como es adentro · es afuera</div>
+      <div style="font:13.5px/1.8 Questrial,sans-serif;color:#D9CEBF">Bienestar consciente.<br>Argentina.</div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Navegar</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="Antai Web.dc.html" style="color:#D9CEBF">Inicio</a>
+        <a href="Antai Web.dc.html#descubri" style="color:#D9CEBF">ANTAI</a>
+        <a href="Encontra tu momento.dc.html" style="color:#D9CEBF">Encontrá tu momento</a>
+        <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF">Conocé lo que elegís</a>
+        <a href="Bienestar.dc.html" style="color:#D9CEBF">Momentos ANTAI</a>
+        <a href="{{ tienda }}" target="_blank" style="color:#D9CEBF">Tienda</a>
+      </div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Contacto</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="{{ mailto }}" style="color:#D9CEBF">{{ email }}</a>
+        <a href="{{ mailto2 }}" style="color:#D9CEBF">{{ email2 }}</a>
+        <a href="{{ instagram }}" target="_blank" style="color:#D9CEBF">Instagram</a>
+        <a href="{{ whatsapp }}" target="_blank" style="color:#D9CEBF">WhatsApp</a>
+      </div>
+    </div>
+    <div>
+      <div style="font:12px Questrial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D4622A;margin-bottom:12px">Información</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:13.5px Questrial,sans-serif">
+        <a href="Conoce lo que elegis.dc.html" style="color:#D9CEBF">Información sanitaria</a>
+        <a href="#contacto" style="color:#D9CEBF">Política de privacidad</a>
+        <a href="#contacto" style="color:#D9CEBF">Términos y condiciones</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1080px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(243,239,230,.18);font:12.5px/1.8 Questrial,sans-serif;color:rgba(217,206,191,.82)">© 2026 ANTAI · La información oficial de cada fórmula está disponible en su envase.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const AUDIOS = [
+  { slug:'impulso', nombre:'Impulso', momento:'Cuando empieza el día', dur:'1:18', src:'',
+    d:'Para esos días en que te levantás, pero todavía sentís que el cuerpo no acompaña.' },
+  { slug:'focus', nombre:'Focus', momento:'Cuando necesitás concentrarte', dur:'1:24', src:'',
+    d:'Para esos momentos en que tenés mucho por hacer y necesitás encontrar claridad para enfocarte.' },
+  { slug:'reset', nombre:'Reset', momento:'Cuando necesitás volver a empezar', dur:'1:12', src:'',
+    d:'Para esos momentos en que sentís el cuerpo pesado y necesitás recuperar la sensación de liviandad.' },
+  { slug:'calma', nombre:'Calma', momento:'Cuando el día empieza a bajar', dur:'1:30', src:'',
+    d:'Para ese momento en que querés dejar atrás el ritmo del día y entrar, de a poco, en otro estado.' }
+];
+const ONDAS = [7, 12, 18, 10, 20, 14, 8, 16, 11, 19, 9, 15, 6, 13].map(h => h + 'px');
+
+class Component extends DCLogic {
+  state = { data: null, play: null, sec: 'leer' };
+
+
+  _mq = () => {
+    const w = window.innerWidth;
+    if (this._w !== (w > 860)) { this._w = w > 860; this.setState({ wide: this._w, menu: false }); }
+  };
+  _initResp() {
+    this._mq(); window.addEventListener('resize', this._mq);
+    // En pantallas táctiles (iOS) el fondo fijo no funciona: pasa a scroll normal
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+      requestAnimationFrame(() => document.querySelectorAll('div').forEach(el => {
+        const a = el.style.backgroundAttachment;
+        if (a && a.includes('fixed')) el.style.backgroundAttachment = a.replace(/fixed/g, 'scroll');
+      }));
+    }
+  }
+  renderVals() {
+    const w = this.state.wide !== false;
+    return Object.assign(this._rv(), {
+      bgLeer: this.state.sec === 'leer' ? '#D4622A' : 'rgba(243,239,230,.06)', bgEscuchar: this.state.sec === 'escuchar' ? '#D4622A' : 'rgba(243,239,230,.06)',
+      goLeer: () => { this._lock = Date.now(); this.setState({ sec: 'leer' }); },
+      goEscuchar: () => { this._lock = Date.now(); this.setState({ sec: 'escuchar' }); },
+      wide: w, narrow: !w, menuOpen: !w && !!this.state.menu,
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      trioCols: w ? '1fr 1px 1fr 1px 1fr' : '1fr'
+    });
+  }
+
+
+  _initFade() {
+    if (location.hash) {
+      let n = 0;
+      const t = setInterval(() => {
+        const el = document.getElementById(location.hash.slice(1));
+        if (el && this.state.data) { clearInterval(t); setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 62, behavior: 'instant' }), 60); }
+        else if (++n > 60) clearInterval(t);
+      }, 50);
+    }
+    if (window.parent !== window) {
+      document.documentElement.style.background = 'transparent'; document.body.style.background = 'transparent';
+      let k = 0; const w = setInterval(() => { if (this.state.data || ++k > 80) { clearInterval(w); window.parent.postMessage({ antaiReady: 1 }, '*'); } }, 50);
+    }
+    if (window.__antaiNav) return; window.__antaiNav = true;
+    const ease = t => -(Math.cos(Math.PI * t) - 1) / 2;
+    const smooth = (to) => {
+      const from = window.scrollY, d = to - from, dur = Math.min(1800, Math.max(1150, Math.abs(d) * 1.1)), t0 = performance.now();
+      const step = (now) => { const p = Math.min(1, (now - t0) / dur); window.scrollTo({ top: from + d * ease(p), behavior: 'instant' }); if (p < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    };
+    document.addEventListener('click', e => {
+      const a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const href = a.getAttribute('href') || '';
+      if (/^(https?:|mailto:|tel:)/.test(href)) return;
+      const file = href.split('#')[0], hash = href.split('#')[1] || '';
+      const here = decodeURIComponent(location.pathname.split('/').pop());
+      if (window.parent !== window && file && decodeURIComponent(file) !== here) { e.preventDefault(); window.parent.postMessage({ antaiGo: href }, '*'); return; }
+      if (file && decodeURIComponent(file) !== here) return;
+      e.preventDefault();
+      if (this.state.menu) this.setState({ menu: false });
+      const el = hash && document.getElementById(hash);
+      smooth(el ? el.getBoundingClientRect().top + window.scrollY - 62 : 0);
+    }, true);
+  }
+
+  componentDidMount() {
+    this._initResp();
+    this._initFade();
+    import('./antai-data.js').then(m => this.setState({ data: m })).catch(e => console.warn('antai-data', e));
+  }
+
+  _rv() {
+    const d = this.state.data;
+    const c = (d && d.CONTACTO) || { email: 'natalia@antai.com.ar', email2: 'martin@antai.com.ar', instagram: '#contacto', whatsapp: '#contacto', tienda: '#contacto' };
+    return {
+      tienda: c.tienda, email: c.email, mailto: 'mailto:' + c.email, email2: c.email2 || '', mailto2: 'mailto:' + (c.email2 || ''),
+      instagram: c.instagram, whatsapp: c.whatsapp,
+      articulos: [
+        { t:'Por qué nos cuesta parar', d:'Una mirada honesta sobre el ritmo que llevamos y lo que cuesta interrumpirlo.' },
+        { t:'Escuchar lo que necesitamos', d:'Cómo reconocer un momento antes de elegir qué lo acompaña.' },
+        { t:'Pequeños rituales cotidianos', d:'Lo simple repetido: por qué el hábito importa más que la intensidad.' }
+      ],
+      audios: AUDIOS.map(a => {
+        const on = this.state.play === a.slug;
+        return Object.assign({}, a, {
+          url: 'Formula.dc.html#' + a.slug,
+          icon: on ? '❙❙' : '▶',
+          label: on ? 'Reproduciendo…' : 'Escuchar',
+          ondas: ONDAS,
+          onPlay: () => this.setState(s => ({ play: s.play === a.slug ? null : a.slug }))
+        });
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>
